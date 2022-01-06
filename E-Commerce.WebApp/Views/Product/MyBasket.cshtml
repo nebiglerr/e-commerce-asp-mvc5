@@ -1,0 +1,223 @@
+﻿@model E_Commerce.WebApp.Models.UserBasket
+@using E_Commerce.BusinnessLayer
+@{
+    ViewBag.Title = "Sepetim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cart_area cart-area-padding sp-inner-page--top">
+    <div class="container">
+        <div class="page-section-title">
+            <h1>SEPETİM</h1>
+        </div>
+        @if (ManagerSession.User != null)
+        {
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Cart Table -->
+                    <div class="cart-table table-responsive mb--40">
+                        <table class="table">
+                            <!-- Head Row -->
+                            <thead>
+                                <tr>
+                                    <th class="pro-remove"></th>
+                                    <th class="pro-thumbnail">Resim</th>
+                                    <th class="pro-title">Ürün</th>
+                                    <th class="pro-price">Fiyat</th>
+                                    <th class="pro-quantity">Adet</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.BasketDetail)
+                                {
+                                    <tr>
+
+                                        <td class="pro-remove">
+                                            <form action="/mybasket/basketdelete" method="post">
+                                                <input type="hidden" value="@item.Product.Id" name="ProductId" />
+                                                <input type="hidden" value="@item.Varyant" name="Varyant" />
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+
+                                        </td>
+                                        @if (item.Product.Image != null && item.Product.Image != "")
+                                        {
+                                            if (item.Product.Image.Split(';')[0].Length > 0)
+                                            {
+                                                <td class="pro-thumbnail"><a href="#"><img src="http://localhost:60314/\Content/images/@item.Product.Image.Split(';')[0]" alt="Product"></a></td>
+                                            }
+                                        }
+
+                                        <td class="pro-title"><a href="#">@item.Product.Name</a></td>
+                                        <td class="pro-price"><span>@item.Product.Price₺</span></td>
+
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty">
+                                                <div class="count-input-block">
+                                                    <input type="number" class="form-control text-center" max="@item.Product.Piece" value="@item.Quantity">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                }
+                                @if (Model.BasketDetail.Count > 0)
+                                {
+                                <tr>
+                                    <td colspan="3" class="actions">
+                                        <form action="/mybasket/paymentprocess/@Model.User.Id">
+                                            <div class="update-block text-right">
+                                                <button type="submit" class="btn-black" name="payment_process_@Guid.NewGuid().ToString()">Ödeme İşlemi</button>
+
+                                                <input type="hidden" id="payment_process_id_@Model.User.Id" name="payment_process_name_@Guid.NewGuid().ToString()" value="val_@Guid.NewGuid().ToString()">
+                                                <input type="hidden" name="@Guid.NewGuid().ToString()_wp_http_referer" value="@Guid.NewGuid().ToString()">
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td colspan="1" class="pro-subtotal">KDV<span>@Model.Kdv()₺</span></td>
+
+                                    <td colspan="1" class="pro-subtotal">TOPLAM<span>@Model.Total()₺</span></td>
+                                </tr>
+                                }
+
+                                <!-- Product Row -->
+                                <!-- Discount Row  -->
+                                @*<div class="coupon-block">
+            <div class="coupon-text">
+                <label for="coupon_code">Coupon:</label>
+                <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
+            </div>
+            <div class="coupon-btn">
+                <input type="submit" class="btn-black" name="apply_coupon" value="Kupo Uygula">
+            </div>
+        </div> *@
+
+
+
+
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Cart Table -->
+                    <div class="cart-table table-responsive mb--40">
+                        <table class="table">
+                            <!-- Head Row -->
+                            <thead>
+                                <tr>
+                                    <th class="pro-remove"></th>
+                                    <th class="pro-thumbnail">Resim</th>
+                                    <th class="pro-title">Ürün</th>
+                                    <th class="pro-price">Fiyat</th>
+                                    <th class="pro-quantity">Adet</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.BasketDetail)
+                                {
+                                    <tr>
+
+                                        <td class="pro-remove">
+                                            <form action="/mybasket/basketdelete" method="post">
+                                                <input type="hidden" value="@item.Product.Id" name="ProductId" />
+                                                <input type="hidden" value="@item.Varyant" name="Varyant" />
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+
+                                        </td>
+                                        @if (item.Product.Image != null && item.Product.Image != "")
+                                        {
+                                            if (item.Product.Image.Split(';')[0].Length > 0)
+                                            {
+                                                <td class="pro-thumbnail"><a href="#"><img src="http://localhost:60314/\Content/images/@item.Product.Image.Split(';')[0]" alt="Product"></a></td>
+                                            }
+                                        }
+
+                                        <td class="pro-title"><a href="#">@item.Product.Name</a></td>
+                                        <td class="pro-price"><span>@item.Product.Price₺</span></td>
+
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty">
+                                                <div class="count-input-block">
+                                                    <input type="number" class="form-control text-center" max="@item.Product.Piece" value="@item.Quantity">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                                <!-- Product Row -->
+                                <!-- Discount Row  -->
+                                @*<div class="coupon-block">
+                                        <div class="coupon-text">
+                                            <label for="coupon_code">Coupon:</label>
+                                            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
+                                        </div>
+                                        <div class="coupon-btn">
+                                            <input type="submit" class="btn-black" name="apply_coupon" value="Kupo Uygula">
+                                        </div>
+                                    </div> *@
+
+
+                                @if (Model.BasketDetail.Count > 0)
+                                {
+                                    <tr>
+                                        <td colspan="3" class="actions">
+                                            <form action="/paymentprocess/billing">
+                                                <div class="update-block text-right">
+                                                    <input type="submit" class="btn-black" name="payment_process" value="Ödeme İşlemi">
+                                                    <input type="hidden" id="payment_process_id_@Guid.NewGuid().ToString()" name="payment_process_name_@Guid.NewGuid().ToString()" value="@Guid.NewGuid().ToString()">
+                                                    <input type="hidden" name="@Guid.NewGuid().ToString()_wp_http_referer" value="@Guid.NewGuid().ToString()">
+                                                </div>
+                                            </form>
+                                        </td>
+                                        <td colspan="1" class="pro-subtotal">KDV<span>@Model.Kdv()₺</span></td>
+
+                                        <td colspan="1" class="pro-subtotal">TOPLAM<span>@Model.Total()₺</span></td>
+
+                                    </tr>
+                                }
+
+
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

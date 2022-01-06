@@ -1,0 +1,96 @@
+﻿@model E_Commerce.Entities.AdminViewModel.ProductAddViews
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("Update", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label>Resim Güncelle</label>
+                            <input type="file" name="file" class="form-control" />
+                            <br />
+
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Güncelle" class="btn btn-primary">
+                            </div>
+                        </div>
+                    }
+
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label>Resim</label>
+                        <img src="~/Content/images/@Model.Image.Split(';')[0]" alt="@Model.Name" class="avatar img-thumbnail" width="100" height="100" />
+
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Adı</label>
+                        <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="Adı">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori Seçiniz</label>
+                        <select id="CategoryId" name="CategoryId" class="form-control">
+
+                            <option value="-1">Seçiniz</option>
+                            @foreach (var item in ViewBag.Category)
+                            {
+                                <option value="@item.Id">@item.Definition</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => Model.CategoryId)
+
+                    </div>
+                    <div class="form-group">
+                        <label>Varyant Seçiniz</label>
+                        <select name="VaryantId" class="form-control">
+
+                            <option value="-1">Seçiniz</option>
+                            @foreach (var item in ViewBag.Varyant)
+                            {
+                                <option value="@item.Id">@item.Definition</option>
+                            }
+                        </select>
+                    </div>
+               
+         
+
+
+                    <div class="form-group">
+                        <label>Fiyat</label>
+                        <input type="text" name="Price" value="@Model.Price" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Stok Kodu</label>
+                        <input type="text" name="StockCode" value="@Model.StockCode" class="form-control" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea rows="5" type="text" class="form-control" id="Description" name="Description">@Model.Description</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Adet</label>
+                        <input type="text" class="form-control" value="@Model.Piece" name="Piece">
+                    </div>
+                    <div class="form-group">
+                        <label> Ekleme Tarihi</label>
+                        <input class="form-control" disabled value="@Model.AddDate" />
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success mr-2" id="productAdd">Güncelle</button>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

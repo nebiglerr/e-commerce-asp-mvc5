@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Loreg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="page-section pb--10 pt--50">
+    <div class="container">
+
+        <div class="row">
+            <div class="offset-2 col-md-6 col-xs-6 col-lg-6 mb-30">
+                <!-- Login Form s-->
+                <form action="~/Login/Loreg" method="post">
+
+                    <h4 class="login-title text-center">Giriş Yap</h4>
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--20">
+                                <label>Email Address *</label>
+                                <input class="mb-0" type="email" name="Email">
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label>Şifre</label>
+                                <input class="mb-0" type="password" name="Pass">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <button type="submit" class="btn btn-black   mr-3">Giriş</button>
+                                    <div class="d-inline-flex align-items-center">
+                                        <input type="checkbox" id="accept_terms" class="mb-0 mr-1">
+                                        <label for="accept_terms" class="mb-0 font-weight-400">Beni Hatırla</label>
+                                    </div>
+                                </div>
+                                <p><a href="#" class="pass-lost mt-3">Şifremi Unuttum ?</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+

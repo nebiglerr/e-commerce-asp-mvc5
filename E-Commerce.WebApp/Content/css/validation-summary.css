@@ -1,0 +1,22 @@
+﻿.field-validation-error {
+    border: 1px dotted #a94442;
+    color: #d76663;
+    border-radius: 5px;
+    /*margin-bottom: 8px;*/
+}
+
+    .field-validation-error span {
+        padding: 10px;
+    }
+
+
+.validation-summary-errors {
+    border: 1px dotted #a94442;
+    color: #d76663;
+    border-radius: 5px;
+    /*margin-bottom: 8px;*/
+}
+
+    .validation-summary-errors ul {
+        padding: 5px;
+    }

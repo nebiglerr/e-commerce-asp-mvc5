@@ -1,0 +1,302 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .varyant {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+        .varyant table, th, td {
+            border: 1px solid #808080;
+        }
+
+        .varyant table, th, td {
+            padding: 10px;
+            text-align: center;
+        }
+</style>
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-12 ">
+                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Liste</button>
+
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            @Html.Action("GetProductPartialList", "Product")
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form class="forms-sample">
+                        <div class="form-group">
+                            <label>Ürün Adı</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Adı">
+                        </div>
+                        <div class="form-group">
+                            <label>Kategori Seçiniz</label>
+                            <select id="CategoryId" name="CategoryId" class="form-control">
+
+                                <option value="-1">Seçiniz</option>
+                                @foreach (var item in ViewBag.Category)
+                                {
+                                    <option value="@item.Id">@item.Definition</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Alt Kategori Seçiniz</label>
+                            <select id="SubCategoryId" name="SubCategoryId" class="form-control">
+
+                                <option value="-1">Seçiniz</option>
+                            
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Özellik Seçiniz</label>
+                            <select id="PropertiesId" name="PropertiesId" class="form-control">
+
+                                <option value="-1">Seçiniz</option>
+                                @foreach (var item in ViewBag.ListPropertyt)
+                                {
+                                    <option value="@item.Id">@item.Definition</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fiyat</label>
+                            <input type="number" name="Price" id="Price" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Stok Kodu</label>
+                            <input type="text" name="StockCode" id="StockCode" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Resim Yükle</label>
+
+
+                            <div class="input-group col-xs-12">
+                                <input type="file" name="Image" id="Image" class="form-control" multiple required />
+                                <img src="" id="SelectedImage" style="width:100px" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea rows="5" type="text" class="form-control" id="Description" name="Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Adet</label>
+                            <input type="number" class="form-control" id="Piece" name="Piece">
+                        </div>
+                        <div class="form-group">
+                            <label> Ekleme Tarihi</label>
+                            <input type="hidden" name="AddDate" id="AddDate" class="date" value="Tarih" />
+                        </div>
+                        <hr />
+                        <h5>Varyant Seçimi</h5>
+                        <div class="form-group">
+                            <select id="varyantId">
+
+                                <option value="-1">Seçiniz</option>
+                            </select>
+                            <input type="text" id="Quantity" placeholder="Miktar" name="Quantity" required />
+                            <input type="button" id="VaryantAdd" class="btn btn-warning" value="Varyant Ekle" />
+                            <input type="button" id="VaryanDel" class="btn btn-danger" value="Varyant Sil" />
+                        </div>
+                        <table class="varyant">
+                            <tr>
+                                <th>Silmek İçin Seç</th>
+                                <th>Varyant No</th>
+                                <th>Varyant</th>
+                                <th>Miktar</th>
+                            </tr>
+
+                        </table>
+                        <button type="submit" class="btn btn-success mr-2" id="productAdd">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+  
+
+
+    $("#CategoryId").change(function () {
+
+        var secilenId = $("#CategoryId option:selected").val();
+        var secilenText = $("#CategoryId option:selected").text();
+        if (secilenId == -1) {
+            alert("Lütfen Kategori Seçiniz")
+        } else {
+
+            $.ajax({
+
+                type: "POST",
+                url: "/Product/VaryantGet",
+                data: JSON.stringify({
+                    CategoryId: secilenId
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $("#varyantId").html("");
+                    $.each($.parseJSON(result), function (i, varyant) {
+
+                        $("#varyantId").append($('<option ></option>').val(varyant.Id).html(varyant.Definition));
+                    })
+                }, error: function (result) {
+
+                    alert("Hata oluştu" + result);
+                }
+            });
+            $.ajax({
+
+                type: "POST",
+                url: "/Product/SubCategory",
+                data: JSON.stringify({
+                    CategoryId: secilenId
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $("#SubCategoryId").html("");
+                    $.each($.parseJSON(result), function (i, SubCategory) {
+
+                        $("#SubCategoryId").append($('<option ></option>').val(SubCategory.Id).html(SubCategory.Definition));
+                    })
+                }, error: function (result) {
+
+                    alert("Hata oluştu" + result);
+                }
+            });
+        }
+    })
+
+   /* $("#productName").blur(function () {
+
+        var urunadi = $("#productName").val();
+        if (urunadi != "") {
+            alert("Lütfen Ürün Adını Giriniz")
+        }
+
+    });*/
+
+    $("#Image").change(function () {
+
+        ResimOku(this);
+        ResimYukle();
+    });
+    var data = new FormData();
+    function ResimOku(input) {
+        if (input.files && input.files[0]) {
+            var oku = new FileReader();
+            oku.onload = function (e) {
+                $('#SelectedImage').attr('src', e.target.result)
+            }
+            oku.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function ResimYukle() {
+
+        jQuery.each(jQuery('#Image')[0].files, function (i, file) {
+            data.append('file-' + i, file);
+        });
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Product/ImageUpload",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                Image = result;
+            }, error: function (err) {
+
+                alert("Hata oluştu" + err);
+            }
+        });
+    }
+    var ProducsVariantViews = [];
+    var Image = "";
+
+
+    $("#VaryantAdd").click(function () {
+        var VariantId = $("#varyantId option:selected").val();
+        var Varyant = $("#varyantId option:selected").text();
+        var Quantity = $("#Quantity").val();
+        if (Quantity > 0) {
+            var body = "<tr><td><input type='checkbox' name='sil' id =" + VariantId + "></td><td>" + VariantId + "</td><td>" + Varyant + "</td><td>" + Quantity + "</td></tr>";
+            $("table tbody").append(body);
+            ProducsVariantViews.push({
+                VariantId: VariantId,
+                Quantity: Quantity,
+                PropertiesId: $("#PropertiesId").val()
+            });
+        }
+    });
+    $("#VaryanDel").click(function () {
+        $("table tbody").find('input[name="sil"]').each(function () {
+            if ($(this).is(":checked")) {
+                var id = $(this).find();
+                $(this).parents("tr").remove();
+
+            }
+        });
+
+    });
+    $("#productAdd").click(function () {
+
+        var Product = {
+            Name: $("#productName").val(),
+            CategoryId: $("#CategoryId").val(),
+            PropertiesId: $("#PropertiesId").val(), 
+            Price: $("#Price").val(),
+            StockCode: $("#StockCode").val(),
+            Description: $("#Description").val(),
+            Piece: $("#Piece").val(),
+            LowerCategoryId: $("#SubCategoryId").val(),
+            Image: Image,
+            ProducsVariantViews: ProducsVariantViews,
+        }
+        $.ajax({
+
+            type: "POST",
+            url: "/Product/Add",
+            data: JSON.stringify(Product),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                window.location.href = '/mybasket';
+            }, error: function (err) {
+
+                window.location.href = '/mybasket';
+            }
+        });
+    })
+</script>

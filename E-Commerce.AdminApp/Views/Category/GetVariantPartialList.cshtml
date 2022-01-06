@@ -1,0 +1,52 @@
+﻿@model IEnumerable<E_Commerce.Entities.AdminViewModel.VariantList>
+
+<script>
+    $(document).ready(function () {
+        $('#getList').DataTable();
+    });
+</script>
+
+<div class="card  ">
+    <div class="grid-margin stretch-card">
+        <div class="card-body">
+            <h4 class="card-title">Varyant Listesi</h4>
+            <table class="table" id="getList">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Varyant Adı
+                        </th>
+                        <th>
+                            Kategori Adı
+                        </th>
+                        <th>
+                            Varyant Sil
+                        </th>
+                        <th>
+                            Varyant Güncelle
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Definition</td>
+                            <td>@item.CategoryName</td>
+                            <td> <a class="btn btn-info " href="/Kategoriler/KategoriSil/@item.Id" onclick="return confirm('Silmek istediğinize eminmisiniz?')">Sil</a></td>
+                            <td>
+                                <a class="btn btn-secondary" href="/Kategoriler/Guncelle/@item.Id">Güncelle</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</div>

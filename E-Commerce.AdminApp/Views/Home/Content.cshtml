@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Gizlilik Ayarları</h4>
+                    <form class="forms-sample" method="post" action="PrivacyPolicy">
+                        @foreach (var item in ViewBag.PrivacyPolicy)
+                        {
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" value="@item.Title" name="Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Anahtar Kelime</label>
+                                <input type="text" class="form-control" value="@item.Keyword" name="Keyword">
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik</label>
+                                <input type="text" class="form-control" value="@item.Content" name="Content">
+                            </div>
+
+
+
+                        }
+
+                        <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Üyelik Sözleşmesi</h4>
+                    <form class="forms-sample" method="post" action="MembershipAgreement">
+                        @foreach (var item in ViewBag.MembershipAgreement)
+                        {
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" value="@item.Title" name="Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Anahtar Kelime</label>
+                                <input type="text" class="form-control" value="@item.Keyword" name="Keyword">
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik</label>
+                                <input type="text" class="form-control" value="@item.Content" name="Content">
+                            </div>
+
+
+
+                        }
+
+                        <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">İade Koşul Ayarları</h4>
+                    <form class="forms-sample" method="post" action="RefundConditions">
+                        @foreach (var item in ViewBag.RefundConditions)
+                        {
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" value="@item.Title" name="Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Anahtar Kelime</label>
+                                <input type="text" class="form-control" value="@item.Keyword" name="Keyword">
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik</label>
+                                <input type="text" class="form-control" value="@item.Content" name="Content">
+                            </div>
+
+
+
+                        }
+
+                        <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Hakkımızda Ayarları</h4>
+                    <form class="forms-sample" method="post" action="About">
+                        @foreach (var item in ViewBag.About)
+                        {
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" value="@item.Title" name="Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Anahtar Kelime</label>
+                                <input type="text" class="form-control" value="@item.Keyword" name="Keyword">
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik</label>
+                                <input type="text" class="form-control" value="@item.Content" name="Content">
+                            </div>
+
+
+
+                        }
+
+                        <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,219 @@
+﻿@using E_Commerce.BusinnessLayer.WebAppManager
+@using E_Commerce.Entities.Db
+@using System.Web.Mvc
+@using System.Web.WebPages
+
+
+
+@helper CategoryList(List<Product> listProduct)
+{
+    <div class="pt--50">
+        <div class="container">
+
+            <div class="slider-header-block tab-header d-flex">
+                <div class="block-title">
+                    <h2>TOP CATEGORIES THIS WEEK</h2>
+                </div>
+
+
+
+                <ul class="pm-tab-nav nav nav-tabs" id="myTab" role="tablist" >
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Köpek Maması</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Kedi Maması</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Kuş Maması</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="tab-content pm-slider-tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                            autoplay&quot;: true,
+                            autoplaySpeed&quot;: 3000,
+                            slidesToShow&quot;: 5,
+                            rows&quot; :2,
+                            arrows&quot;: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows; :1} }
+                        ]">
+                        <div class="slick-list draggable">
+
+
+                            @CategoryListTab(listProduct.Where(x => x.CategoryId == 22).ToList())
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                            autoplay: true,
+                            autoplaySpeed: 3000,
+                            slidesToShow: 5,
+                            rows :2,
+                            arrows: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows :1} }
+                        ]">
+                        <div class="slick-list draggable">
+
+                            @CategoryListTab(listProduct.Where(x => x.CategoryId == 24) .ToList())
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                           autoplay: true,
+                           autoplaySpeed: 3000,
+                           slidesToShow: 5,
+                           rows :2,
+                           arrows: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows :1} }
+                        ]">
+                        <div class="slick-list draggable">
+
+
+                            @CategoryListTab(listProduct.Where(x => x.CategoryId == 33).ToList())
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+@helper CategoryListTab(List<Product> listProduct)
+{
+
+    if (listProduct.Count > 0)
+    {
+
+
+        <div class="slick-track" style="opacity: 1; width: 110%; transform: translate3d(0px, 0px, 0px); transition: transform 500ms ease 0s;">
+            @foreach (var itemx in listProduct)
+            {
+                if (itemx.Piece > 0)
+                {
+                    <div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 234px;" tabindex="-1">
+
+                        <div>
+                            <div class="single-slide slick-active" style="width: 100%; display: inline-block;">
+
+                                <div class="pm-product">
+                                    <div class="image">
+                                        <a href="~/@itemx.GenerateSlug()" tabindex="-1"><img src="http://localhost:60314/\Content/images/@itemx.Image.Split(';')[0]" alt=""></a>
+                                        @*
+                                            <div class="hover-conents">
+                                                <ul class="product-btns">
+                                                    <li><a href="wishlist.html" tabindex="-1"><i class="ion-ios-heart-outline"></i></a></li>
+                                                    <li><a href="compare.html" tabindex="-1"><i class="ion-ios-shuffle"></i></a></li>
+                                                    <li><a href="#" data-toggle="modal" data-target="#quickModal" tabindex="-1"><i class="ion-ios-search"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <span class="onsale-badge">Sale!</span>
+                                        *@
+                                    </div>
+                                    <div class="content">
+                                        <h3>@itemx.Name</h3>
+                                        <div class="price text-red">
+                                            <span class="old">@itemx.Price₺</span>
+                                            <span>@itemx.Price</span>
+                                        </div>
+                                        @*{
+                                                ProductManager _productManager = new ProductManager();
+                                                int splitingId = int.Parse(itemx.GenerateSlug().Substring(0).Split('-')[0]);
+                                                var ProductVariant = _productManager.GetProductVariant(splitingId);
+                                                var ProductProperty = _productManager.GetProductProperties(splitingId);
+
+                                                  <form method="post" action="~/Product/BasketAdd">
+                                                <input hidden value=" @itemx.Id" name="Id" id="Id" />
+                                                <input hidden value=" @ProductVariant[0].Id" name="VariantId" id="VariantId" />
+                                                <input hidden value=" @ProductProperty[0].Id" name="PropertyId"  id="PropertyId"/>
+                                                <input hidden value=" @itemx.Price" name="Price" id="Price" />
+                                                <input hidden value=" 1" name="Quantity" id="Quantity" />
+                                                <div class="btn-block">
+                                                    <button type="submit" id="orderGave" class="btn btn-outlined btn-rounded" tabindex="-1">Sepete Ekle</button>
+                                                </div>
+                                            </form>
+                                            }*@
+                                        <div class="btn-block">
+                                            <a href="~/@itemx.GenerateSlug()" id="orderGave" class="btn btn-outlined btn-rounded" tabindex="-1">Detay</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                }
+
+
+
+
+            }
+
+
+        </div>
+
+
+    }
+
+}
+
+@helper Advertisement()
+{
+    <!-- Promotion Block 2 -->
+    <section class="pt--50 space-db--30">
+        <h2 class="d-none">
+            Promotion Block
+        </h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-4">
+                    <a class="promo-image overflow-image">
+                        <img src="~/Content/image/product/promo-product-image-2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <a class="promo-image overflow-image  promo-small ">
+                        <img src="~/Content/image/product/promo-product-image-sm.jpg" alt="">
+                    </a>
+                    <a class="promo-image overflow-image  promo-small ">
+                        <img src="~/Content/image/product/promo-product-image-sm-2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <a class="promo-image overflow-image">
+                        <img src="~/Content/image/product/promo-product-image.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="p-5"></div>
+}

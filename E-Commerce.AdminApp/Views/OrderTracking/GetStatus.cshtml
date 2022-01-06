@@ -1,0 +1,55 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.OrderStatus>
+<script>
+    $(document).ready(function () {
+        $('#getList').DataTable();
+    });
+</script>
+
+<div class="card  ">
+    <div class="grid-margin stretch-card">
+        <div class="card-body">
+            <h4 class="card-title">Kargo Şirketi Listesi</h4>
+            <table class="table" id="getList">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Tanım
+                        </th>
+                        <th>
+                            Detay
+                        </th>
+
+                        <th>
+                            Güncelle
+                        </th>
+                        <th>
+                            Sil
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Definition</td>
+                            <td>@item.Detail</td>
+
+                            <td>
+                                <a class="btn btn-secondary" href="/OrderTracking/StatusUpdate/@item.Id">Güncelle</a>
+                            </td>
+                            <td> <a class="btn btn-info " href="/OrderTracking/StatusDelete/@item.Id" onclick="return confirm('Silmek istediğinize eminmisiniz?')">Sil</a></td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</div>
+

@@ -1,0 +1,43 @@
+﻿
+
+@model E_Commerce.Entities.AdminViewModel.SubCategoryAddView
+@{
+    ViewBag.Title = "SubCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="col-12 p-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Alt Kategori Ekle</h2>
+                <div class="p-4">
+
+                    @using (Html.BeginForm("SubCategory", "Category", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+
+
+                        <div class="form-group">
+                            @Html.Action("CategoryGetDropDown", "Category")
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Definition, new { @class = "form-control", placeholder = "Alt Kategori", id = "SubCatName" })
+                            @Html.ValidationMessageFor(model => Model.Definition)
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-3">
+        @Html.Action("GetSubCategoryPartialList", "Category")
+    </div>
+</div>

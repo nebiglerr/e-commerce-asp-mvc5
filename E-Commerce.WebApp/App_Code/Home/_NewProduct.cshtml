@@ -1,0 +1,192 @@
+﻿@helper ProducList()
+{
+    <section class="pt--50">
+        <div class="container">
+
+            <div class="slider-header-block tab-header d-flex">
+                <div class="block-title">
+                    <h2>NEW PRODUCTS</h2>
+                </div>
+
+
+
+                <ul class="pm-tab-nav nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="bird-tab" data-toggle="tab" href="#bird" role="tab" aria-controls="bird" aria-selected="true">Bird</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="dog-tab" data-toggle="tab" href="#dog" role="tab" aria-controls="dog" aria-selected="false">Dog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="mini-dog-tab" data-toggle="tab" href="#mini-dog" role="tab" aria-controls="mini-dog" aria-selected="false">Mini Dog</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+            <div class="tab-content pm-slider-tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="bird" role="tabpanel" aria-labelledby="bird-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                            autoplay&quot;: true,
+                            autoplaySpeed&quot;: 3000,
+                            slidesToShow&quot;: 5,
+                            rows&quot; :2,
+                            arrows&quot;: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows; :1} }
+                        ]">
+                        <div class="slick-list draggable slick-active">
+                            <div class="row">
+                                <div class="pm-product product-type-list col-md-6">
+                                    <a href="product-details.html" class="image" tabindex="0">
+                                        <img src="~/Content/image/product/home-1/product-1.jpg" alt="">
+                                    </a>
+                                    <div class="content">
+                                        <h3 class="font-weight-500"> <a href="#" tabindex="0">Convallis quam sit</a></h3>
+                                        <div class="price text-red mb-3">
+                                            <span class="old">$200</span>
+                                            <span>$300</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                        <div class="count-down-block">
+                                            <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pm-product product-type-list col-md-6">
+                                    <a href="product-details.html" class="image" tabindex="0">
+                                        <img src="~/Content/image/product/home-1/product-1.jpg" alt="">
+                                    </a>
+                                    <div class="content">
+                                        <h3 class="font-weight-500"> <a href="#" tabindex="0">Convallis quam sit</a></h3>
+                                        <div class="price text-red mb-3">
+                                            <span class="old">$200</span>
+                                            <span>$300</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                        <div class="count-down-block">
+                                            <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="dog" role="tabpanel" aria-labelledby="dog-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                            autoplay: true,
+                            autoplaySpeed: 3000,
+                            slidesToShow: 5,
+                            rows :2,
+                            arrows: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows :1} }
+                        ]">
+                        <div class="slick-list draggable">
+                            <div class="row">
+                                <div class="pm-product product-type-list col-md-6">
+                                    <a href="product-details.html" class="image" tabindex="0">
+                                        <img src="~/Content/image/product/home-1/product-2.jpg" alt="">
+                                    </a>
+                                    <div class="content">
+                                        <h3 class="font-weight-500"> <a href="#" tabindex="0">Convallis quam sit</a></h3>
+                                        <div class="price text-red mb-3">
+                                            <span class="old">$200</span>
+                                            <span>$300</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                        <div class="count-down-block">
+                                            <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pm-product product-type-list col-md-6">
+                                    <a href="product-details.html" class="image" tabindex="0">
+                                        <img src="~/Content/image/product/home-1/product-2.jpg" alt="">
+                                    </a>
+                                    <div class="content">
+                                        <h3 class="font-weight-500"> <a href="#" tabindex="0">Convallis quam sit</a></h3>
+                                        <div class="price text-red mb-3">
+                                            <span class="old">$200</span>
+                                            <span>$300</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                        <div class="count-down-block">
+                                            <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="mini-dog" role="tabpanel" aria-labelledby="mini-dog-tab">
+                    <div class="petmark-slick-slider border grid-column-slider arrow-type-two slick-initialized slick-slider" data-slick-setting="{
+                           autoplay: true,
+                           autoplaySpeed: 3000,
+                           slidesToShow: 5,
+                           rows :2,
+                           arrows: true
+                        }" data-slick-responsive="[
+                            {breakpoint:991, settings: {slidesToShow: 3} },
+                            {breakpoint:768, settings: {slidesToShow: 2} },
+                            {breakpoint:480, settings: {slidesToShow: 1,rows :1} }
+                        ]">
+                        <div class="slick-list draggable">
+                            <div class="single-slide slick-slide">
+                                <div class="row">
+                                    <div class="pm-product product-type-list col-md-6">
+                                        <a href="product-details.html" class="image" tabindex="-1">
+                                            <img src="~/Content/image/product/home-1/product-4.jpg" alt="">
+                                        </a>
+                                        <div class="content">
+                                            <h3 class="font-weight-500"> <a href="#" tabindex="-1">Convallis quam sit</a></h3>
+                                            <div class="price text-red mb-3">
+                                                <span class="old">$200</span>
+                                                <span>$300</span>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                            <div class="count-down-block">
+                                                <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pm-product product-type-list col-md-6">
+                                        <a href="product-details.html" class="image" tabindex="-1">
+                                            <img src="~/Content/image/product/home-1/product-4.jpg" alt="">
+                                        </a>
+                                        <div class="content">
+                                            <h3 class="font-weight-500"> <a href="#" tabindex="-1">Convallis quam sit</a></h3>
+                                            <div class="price text-red mb-3">
+                                                <span class="old">$200</span>
+                                                <span>$300</span>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor.</p>
+                                            <div class="count-down-block">
+                                                <div class="product-countdown" data-countdown="2020/05/01"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hrs</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">mins</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Secs</span></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </section>
+}

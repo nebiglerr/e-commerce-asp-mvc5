@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-section sp-inner-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="col-lg-3 col-12">
+                        <div class="myaccount-tab-menu nav" role="tablist">
+
+                            <a href="#orders" data-toggle="tab" class="active show"><i class="fa fa-cart-arrow-down"></i> Sipariş Geçmişi</a>
+
+                            @*
+
+                                <a href="#payment-method" data-toggle="tab" class="">
+                                    <i class="fa fa-credit-card"></i> Payment
+                                    Method
+                                </a>*@
+
+                            @*  <a href="#address-edit" data-toggle="tab" class=""><i class="fa fa-map-marker"></i> address</a>*@
+
+                            <a href="/Login/Account" class=""><i class="fa fa-user"></i> Hesap Detay</a>
+                            <a href="/Login/PassChange" class=""><i class="fa fa-passport"></i>Şifreni Değiştir</a>
+
+                        </div>
+                    </div>
+                    <!-- My Account Tab Menu End -->
+                    <!-- My Account Tab Content Start -->
+                    <div class="col-lg-9 col-12 mt-30 mt-lg-0">
+                        <div class="tab-content" id="myaccountContent">
+                            <!-- Single Tab Content Start -->
+
+                            <div class="tab-pane fade  active show" id="orders" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <h3>Siparişlerim</h3>
+
+                                    <div class="myaccount-table table-responsive text-center">
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Adı</th>
+                                                    <th>Tarih</th>
+
+                                                    @*
+                                                        <th>Durum</th>
+                                                    *@
+                                                    <th>Toplam</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @if (ViewBag.GetOrderDetail != null)
+                                                {
+
+
+
+                                                    foreach (var itemcd in ViewBag.GetOrderDetail)
+                                                    {
+                                                        if (itemcd.SellBy <= DateTime.Now)
+                                                        {
+                                                            <tr>
+                                                                <td>@itemcd.ProductId</td>
+                                                                <td><a href="~/@itemcd.ProductId-@itemcd.GenerateSlug()">@itemcd.Name</a></td>
+                                                                <td>@itemcd.SellBy.ToString()</td>
+
+                                                                @*<td>
+                            @ViewBag.GetOrderStatus.Definition
+                        </td> *@
+                                                                <td>@itemcd.Total₺</td>
+                                                            </tr>
+                                                        }
+
+
+                                                    }
+
+                                                }
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Tab Content End -->
+                        </div>
+                    </div>
+                    <!-- My Account Tab Content End -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

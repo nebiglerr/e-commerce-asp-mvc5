@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "CargoCompanyAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form class="forms-sample" method="post">
+                        <div class="form-group">
+                            <label>Şirket Adı</label>
+                            <input type="text" class="form-control" id="productName" name="CompanyName" placeholder="Adı">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Adress</label>
+                            <input type="text" name="Adress" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="number" name="Telefon" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>WebSite</label>
+                            <textarea rows="5" type="text" class="form-control" name="WebSite"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>E-Mail</label>
+                            <input type="email" class="form-control" name="EMail">
+                        </div>
+                        <div class="form-group">
+                            <label>Vergi No</label>
+                            <input type="text" class="form-control" name="TaxNo">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success mr-2" id="productAdd">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-12 ">
+
+
+                @Html.Action("GetCargo", "OrderTracking")
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,97 @@
+﻿@model E_Commerce.Entities.Db.Order
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+    <div class="content-wrapper">
+        <div class="row">
+
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+
+                    <div class="card-body col-md-12">
+                        <form method="post">
+                            <h2>Sipariş Güncelle</h2>
+
+                            <div class="form-group ">
+                                <label>Müşteri Adı</label>
+                                <input type="text" name="Name" value="@Model.User.Name" class="form-control" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Müşteri Soyadı</label>
+                                <input type="text" name="SurName" value="@Model.User.SurName" class="form-control"  disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Ürün Adı</label>
+                                <input type="text" name="ProductName" value="@Model.OrderDetail.Product.Name" class="form-control"  disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Fiyat</label>
+                                <input type="text" name="Price" value="@Model.OrderDetail.Price" class="form-control"  disabled/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Varyant</label>
+                                <input type="text" name="VariantDefinition" value="@Model.OrderDetail.Variant.Definition" class="form-control"disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Adet</label>
+                                <input type="text" name="Quantity" value="@Model.OrderDetail.Quantity" class="form-control"disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>E-Posta</label>
+                                <input type="text" name="Email" value="@Model.User.Email" class="form-control" disabled/>
+                            </div>
+                            @*   <div class="form-group">
+                <label>Teslimat Adresi</label>
+                <textarea   rows="5" class="form-control"> @Model.Musteri.TeslimatAdresi </textarea>
+            </div>
+            <div class="form-group">
+                <label>Fatura Adresi</label>
+                <textarea  rows="5" class="form-control"  > @Model.Musteri.FaturaAdresi </textarea>
+            </div> *@
+
+                            <div class="form-group">
+                                <label>Ödeme Yöntemi</label>
+                                <input type="text" value="@Model.OrderDetail.PaymentMethod.Definition" name="Definition" class="form-control" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Kargo Firması</label>
+                                <input type="text" name="CompanyName" value="@Model.OrderDetail.CargoCompany.CompanyName" class="form-control" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Kargo Takip Numarası</label>
+                                <input type="text" name="CargoFollow" value="@Model.CargoFollow" class="form-control" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Sipariş Durumu</label>
+                                @Html.DropDownList("OrderStatusId", (List<SelectListItem>)ViewBag.Status, htmlAttributes: new { @class = "form-control" })
+
+
+                            </div>
+                            <div class="form-group">
+                                <label>Satış Tarihi</label>
+                                <input type="text" name="SellBy" value="@Model.SellBy.ToString()" class="form-control" disabled />
+                                <input type="text" name="Id" value="@Model.Id" class="form-control" disabled hidden />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+

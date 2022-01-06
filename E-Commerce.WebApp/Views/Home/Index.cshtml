@@ -1,0 +1,29 @@
+﻿@using ASP.Layout
+@using ASP.Home
+@using E_Commerce.Entities.Db
+@using E_Commerce.BusinnessLayer.WebAppManager
+@{
+    var product = new ProductManager();
+    List<Product> listProduct = product.GetProduct();
+    ViewBag.Title = "Index";
+}
+
+
+@_MenuHeader.Slider()
+@*@_MenuHeader.Options() *@
+
+
+@* @_NewProduct.ProducList() *@
+<!-- Category Section -->
+@_Generaly.CategoryIconList()
+<!-- Modal -->
+@_Middle.Modal()
+
+<!-- Promotion Block 1 -->
+@_Middle.Advertisement()
+<!-- Slider Block Two -->
+@* @_Middle.CategoryAndProductList()*@
+
+@_Lower.CategoryList(listProduct)
+
+@_Lower.Advertisement()

@@ -1,0 +1,6 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.Variant>
+<div class="form-group">
+    <label>Varyant</label>
+    @Html.DropDownList("Id", (List<SelectListItem>)ViewBag.Varyant, htmlAttributes: new { @class = "form-control" })
+</div>
+

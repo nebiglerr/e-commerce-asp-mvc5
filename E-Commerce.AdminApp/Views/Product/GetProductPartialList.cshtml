@@ -1,0 +1,151 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.Product>
+
+<script>
+    $(document).ready(function () {
+        $('#getList').DataTable();
+    });
+</script>
+
+<div class="card ">
+    <div class="grid-margin stretch-card">
+        <div class="card-body">
+            <h4 class="card-title">Ürün Listesi</h4>
+            <table class="table" id="getList">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Resim
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Fiyat
+                        </th>
+                        <th>
+                            Açıklama
+                        </th>
+                        <th>
+                            Stok Kodu
+                        </th>
+                        <th>
+                            Adet
+                        </th>
+                        <th>
+                            Kategori
+                        </th>
+                        <th>
+                            Ekleme Tarihi
+                        </th>
+                        <th>
+                            Güncelle
+                        </th>
+                        <th>
+                            Sil
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+
+                            @if (item.Image != null && item.Image != "")
+                            {
+                                if (item.Image.Split(';')[0].Length > 0)
+                                {
+                                    <td>
+                                        <a class="pop">
+                                            <img src="~/Content/images/@item.Image.Split(';')[0]" id="myImg" alt="Snow" style="width:50px;height:50px;" />
+                                        </a>
+
+
+
+                                    </td>
+                                }
+                            }
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>
+                                @{
+
+                                    Guid g = Guid.NewGuid();
+                                    string GuidString = Convert.ToBase64String(g.ToByteArray());
+                                    GuidString = GuidString.Replace("=", "");
+                                    GuidString = GuidString.Replace("+", "");
+                                    GuidString = GuidString.Replace("/", "");
+                                }
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@GuidString">
+                                    Açıklama
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="@GuidString" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"> Açıklama</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @item.Description
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@item.StockCode</td>
+                            <td>@item.Piece</td>
+                            <td>@item.Category.Definition</td>
+                            <td>@item.AddDate.ToString()</td>
+                            <td>
+                                <a class="btn btn-secondary" href="/Product/Update/@item.Id">Güncelle</a>
+                            </td>
+                            <td> <a class="btn btn-info " href="/Product/Delete/@item.Id" onclick="return confirm('Silmek istediğinize eminmisiniz?')">Sil</a></td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="modal fade bd-example-modal-lg" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <img src="" class="imagepreview" style="width: 70%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+
+    $('.pop').on('click', function () {
+        $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+        $('#imagemodal').modal('show');
+    });
+
+
+
+
+
+    // Get the <span> element that closes the modal
+
+
+</script>
+

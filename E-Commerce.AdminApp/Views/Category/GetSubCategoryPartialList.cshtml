@@ -1,0 +1,44 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.Category>
+
+<script>
+    $(document).ready(function () {
+        $('#getSubList').DataTable();
+    });
+</script>
+
+<div class="card  ">
+    <div class="grid-margin stretch-card">
+        <div class="card-body">
+            <h4 class="card-title">Alt Kategori Listesi</h4>
+            <table class="table" id="getSubList">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Alt Kategori Adı</th>
+                        <th>Alt Kategori Sil</th>
+                        @* <th>Alt Kategori Güncelle</th> *@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Definition</td>
+                        <td> <a class="btn btn-info " href="/Category/SubDelete/@item.Id" onclick="return confirm('Silmek istediğinize eminmisiniz?')">Sil</a></td>
+                        @*   <td>
+            <a class="btn btn-secondary" href="/Kategoriler/Guncelle/@item.Id">Güncelle</a>
+        </td> *@
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</div>
+
+

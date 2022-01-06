@@ -1,0 +1,78 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.Order>
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+</script>
+
+<div style="padding:10px;">
+
+    <table class="table table-striped" id="example">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    Adı
+                </th>
+                <th>
+                    Soyadı
+                </th>
+                <th>
+                    E-Posta
+                </th>
+                <th>
+                    Durum
+                </th>
+                <th>
+                    Fiyat
+                </th>
+                <th>
+                    Sipariş Tarihi
+                </th>
+
+
+                <th>
+                    Güncelle
+                </th>
+                <th>
+                    Sil
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+
+
+                    <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.SurName)</td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderStatus.Detail)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderDetail.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SellBy)</td>
+
+                    <td>
+                        <a class="btn btn-info" href="/OrderTracking/Del/@item.Id" onclick="return confirm('Silmek istediğinize eminmisiniz?')">Sil</a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-secondary" href="/OrderTracking/OrderDetail/@item.Id">Sipariş Detay</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

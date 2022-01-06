@@ -1,0 +1,221 @@
+﻿@using E_Commerce.BusinnessLayer.WebAppManager
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var selected = ViewBag.GetCategoryInProduct;
+}
+
+<script src="~/Script/jquery-1.6.3.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Script/toastr.min.js"></script>
+
+<main class="section-padding shop-page-section">
+    <div class="container">
+        <div class="shop-toolbar mb--30">
+            <div class="row align-items-center">
+                <div class="col-5 col-md-3 col-lg-4">
+                    <!-- Product View Mode -->
+                    <div class="product-view-mode">
+                        <a href="#" class="sortting-btn" data-target="list "><i class="fas fa-list"></i></a>
+                        <a href="#" class="sortting-btn active" data-target="grid"><i class="fas fa-th"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7 offset-lg-1 mt-3 mt-md-0  pr-md-0">
+
+
+                    @*
+                             <div class="sorting-selection">
+                            <div class="row align-items-center pl-md-0 pr-md-0 no-gutters">
+                                <div class="col-sm-6 col-md-7 col-xl-8 d-flex align-items-center justify-content-md-end">
+
+                                    <span>Sort By:</span>
+                                    <select id="input-sort" class="form-control nice-select sort-select" style="display: none;">
+                                        <option value="" selected="selected">Default Sorting</option>
+                                        <option value="">
+                                            Sort
+                                            By:Name (A - Z)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Name (Z - A)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Price (Low &gt; High)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Price (High &gt; Low)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Rating (Highest)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Rating (Lowest)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Model (A - Z)
+                                        </option>
+                                        <option value="">
+                                            Sort
+                                            By:Model (Z - A)
+                                        </option>
+                                    </select>
+                                    <div class="nice-select form-control sort-select" tabindex="0">
+                                        <span class="current">Default Sorting</span><ul class="list">
+                                            <li data-value="" class="option selected">Default Sorting</li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Name (A - Z)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Name (Z - A)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Price (Low &gt; High)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Price (High &gt; Low)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Rating (Highest)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Rating (Lowest)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Model (A - Z)
+                                            </li>
+                                            <li data-value="" class="option">
+                                                Sort
+                                                By:Model (Z - A)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-xl-4 col-sm-6 text-sm-right mt-sm-0 mt-3">
+                                    <span>
+                                        Showing 1–20 of 52 results
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    *@
+                </div>
+
+            </div>
+        </div>
+        <div class="shop-product-wrap with-pagination row border grid-four-column mr-0 ml-0 no-gutters grid">
+            @foreach (var item in ViewBag.GetCategoryInProduct)
+            {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="pm-product">
+                        <a href="~/@item.GenerateSlug()" class="image" tabindex="0">
+                            <img src="http://localhost:60314/\Content/images/@item.Image.Split(';')[0]" alt="">
+                        </a>
+                        @*
+                                 <div class="hover-conents">
+                                <ul class="product-btns">
+                                    <li><a href="wishlist.html" tabindex="0"><i class="ion-ios-heart-outline"></i></a></li>
+                                    <li><a href="compare.html" tabindex="0"><i class="ion-ios-shuffle"></i></a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#quickModal" tabindex="0"><i class="ion-ios-search"></i></a></li>
+                                </ul>
+                            </div>
+                        *@
+
+                        <div class="content">
+                            <h3 class="font-weight-500"><a href="product-details.html">@item.Name</a></h3>
+                            <div class="price text-red">
+                                <span class="old">@item.Price₺</span>
+                                <span>@item.Price₺</span>
+                            </div>
+                            <div class="btn-block grid-btn">
+                                <a href="~/@item.GenerateSlug()" id="orderGave" class="btn btn-outlined btn-rounded" tabindex="-1">Detay</a>
+                            </div>
+                            <div class="card-list-content ">
+                                @* <div class="rating-widget mt--20">
+                                        <a href="#" class="single-rating"><i class="fas fa-star"></i></a>
+                                        <a href="#" class="single-rating"><i class="fas fa-star"></i></a>
+                                        <a href="#" class="single-rating"><i class="fas fa-star"></i></a>
+                                        <a href="#" class="single-rating"><i class="fas fa-star-half-alt"></i></a>
+                                        <a href="#" class="single-rating"><i class="far fa-star"></i></a>
+                                    </div> *@
+                                <article>
+                                    <h3 class="d-none sr-only">Article</h3>
+                                    <p>
+                                        @if (item.Description.Length > 370)
+                                        {
+                                            @item.Description.Substring(0, 369)
+                                        }
+                                        else
+                                        {
+                                            @item.Description
+                                        }
+                                    </p>
+                                </article>
+
+                                <div class="btn-block d-flex">
+                                    <input type="hidden" id="Id" value="@item.Id">
+                                    @*{
+                                            ProductManager _productManager = new ProductManager();
+                                            int splitingId = int.Parse(itemx.GenerateSlug().Substring(0).Split('-')[0]);
+                                            var ProductVariant = _productManager.GetProductVariant(splitingId);
+                                            var ProductProperty = _productManager.GetProductProperties(splitingId);
+
+                                              <form method="post" action="~/Product/BasketAdd">
+                                            <input hidden value=" @itemx.Id" name="Id" id="Id" />
+                                            <input hidden value=" @ProductVariant[0].Id" name="VariantId" id="VariantId" />
+                                            <input hidden value=" @ProductProperty[0].Id" name="PropertyId"  id="PropertyId"/>
+                                            <input hidden value=" @itemx.Price" name="Price" id="Price" />
+                                            <input hidden value=" 1" name="Quantity" id="Quantity" />
+                                            <div class="btn-block">
+                                                <button type="submit" id="orderGave" class="btn btn-outlined btn-rounded" tabindex="-1">Sepete Ekle</button>
+                                            </div>
+                                        </form>
+                                        }*@
+                                    <a href="~/@item.GenerateSlug()" id="orderGave" class="btn btn-outlined btn-rounded" tabindex="-1">Detay</a>
+                                    @*
+                                              <div class="btn-options">
+                                            <a href="wishlist.html"><i class="ion-ios-heart-outline"></i>Add to Wishlist</a>
+                                            <a href="compare.html"><i class="ion-ios-shuffle"></i>Add to Compare</a>
+                                        </div>
+                                    *@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            }
+
+
+        </div>
+        <div class="mt--30">
+            <div class="pagination-widget">
+                <div class="site-pagination">
+                    <a href="#" class="single-pagination">|&lt;</a>
+                    <a href="#" class="single-pagination">&lt;</a>
+                    <a href="#" class="single-pagination active">1</a>
+                    <a href="#" class="single-pagination">2</a>
+                    <a href="#" class="single-pagination">&gt;</a>
+                    <a href="#" class="single-pagination">&gt;|</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<E_Commerce.Entities.Db.Category>
+<div class="form-group">
+    <label>Kategori</label>
+    @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, htmlAttributes: new { @class = "form-control" })
+</div>
+
+

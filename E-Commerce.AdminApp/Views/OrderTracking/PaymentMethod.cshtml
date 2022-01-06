@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "PaymentMethod";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form class="forms-sample" method="post">
+                        <div class="form-group">
+                            <label>Tanım</label>
+                            <input type="text" class="form-control" id="productName" name="Definition" placeholder="Tanım">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <input type="text" name="Description" class="form-control" required />
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success mr-2" id="productAdd">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-12 ">
+
+
+                @Html.Action("GetPaymentMethod", "OrderTracking")
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

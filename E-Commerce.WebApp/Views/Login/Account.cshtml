@@ -1,0 +1,212 @@
+﻿@model E_Commerce.Entities.WebAppViewModel.AccountViews
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-section sp-inner-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="col-lg-3 col-12">
+                        <div class="myaccount-tab-menu nav" role="tablist">
+
+
+                            <a href="/Login/OrderHistory" class=""><i class="fa fa-cart-arrow-down"></i> Sipariş Geçmişi</a>
+
+
+
+                            @*
+
+                                <a href="#payment-method" data-toggle="tab" class="">
+                                    <i class="fa fa-credit-card"></i> Payment
+                                    Method
+                                </a>*@
+
+                            @*  <a href="#address-edit" data-toggle="tab" class=""><i class="fa fa-map-marker"></i> address</a>*@
+
+                            <a href="#account-info" data-toggle="tab" class="active show"><i class="fa fa-user"></i> Hesap Detay</a>
+                            <a href="/Login/PassChange" class=" "><i class="fa fa-passport"></i>Şifreni Değiştir</a>
+
+                        </div>
+                    </div>
+                    <!-- My Account Tab Menu End -->
+                    <!-- My Account Tab Content Start -->
+                    <div class="col-lg-9 col-12 mt-30 mt-lg-0">
+                        <div class="tab-content" id="myaccountContent">
+                            <!-- Single Tab Content Start -->
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                     
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            @*
+
+                                <div class="tab-pane fade" id="payment-method" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <div class="container">
+                                            <div class="card">
+                                                <div class="grid-margin stretch-card">
+                                                    <form class="card-body">
+
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Kartın Üzerindeki İsim</label>
+                                                            <div class="controls">
+                                                                <input type="text" class="form-control" pattern="\w+ \w+.*" title="Fill your first and last name" placeholder="Ad Soyad" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Kart Numarası</label>
+                                                            <div class="controls">
+                                                                <div class="row">
+                                                                    <div class="col-3">
+                                                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Card Expiry Date</label>
+                                                            <div class="controls">
+                                                                <div class="row">
+                                                                    <div class="col-4">
+                                                                        <select class="form-control">
+                                                                            <option>January</option>
+                                                                            <option>...</option>
+                                                                            <option>December</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                        <select class="form-control">
+                                                                            <option>2013</option>
+                                                                            <option>...</option>
+                                                                            <option>2015</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Card CVV</label>
+                                                            <div class="controls">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
+                                                                    </div>
+                                                                    <div class="span8">
+                                                                        <!-- screenshot may be here -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            @*
+
+                                <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Billing Address</h3>
+
+                                        <address>
+                                            <p><strong>Alex Tuntuni</strong></p>
+                                            <p>
+                                                1355 Market St, Suite 900 <br>
+                                                San Francisco, CA 94103
+                                            </p>
+                                            <p>Mobile: (123) 456-7890</p>
+                                        </address>
+
+                                        <a href="#" class="theme-btn"><i class="fa fa-edit"></i>Edit Address</a>
+                                    </div>
+                                </div>*@
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            <div class="tab-pane fade active show" id="account-info" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <h3>Hesap Detay</h3>
+
+                                    <div class="account-details-form">
+                                        @using (Html.BeginForm("Account", "Login", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                        <div class="row">
+                                            @*     <div class="col-lg-12 col-12 mb-10">
+            @Html.ValidationSummary(true)
+        </div>*@
+                                            <div class="col-lg-6 col-12 mb-30">
+                                                @Html.TextBoxFor(Model => Model.UserViewModel.Name, new { @class = "form-control", placeholder = "Adı", id = "Name" })
+                                                @Html.ValidationMessageFor(model => Model.UserViewModel.Name)
+                                            </div>
+
+                                            <div class="col-lg-6 col-12 mb-30">
+                                                @Html.TextBoxFor(Model => Model.UserViewModel.SurName, new { @class = "form-control", placeholder = "Soyadı", id = "SurName" })
+                                                @Html.ValidationMessageFor(model => Model.UserViewModel.SurName)
+                                            </div>
+
+                                            @*
+
+        <div class="col-12 mb-30">
+            @Html.TextBoxFor(Model => Model.UserViewModel.Email, new { @class = "form-control", placeholder = "Email", id = "Email" })
+            @Html.ValidationMessageFor(model => Model.UserViewModel.Email)
+        </div>
+
+                                            *@
+                                            <div class="col-12 mb-30">
+                                                @Html.TextAreaFor(Model => Model.UserViewModel.DeliveryAddress, new { @class = "form-control", placeholder = "Teslimat Adresi", id = "DeliveryAddress" })
+                                                @Html.ValidationMessageFor(model => Model.UserViewModel.DeliveryAddress)
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                @Html.TextAreaFor(Model => Model.UserViewModel.BillingAddress, new { @class = "form-control", placeholder = "Fatura Adresi", id = "BillingAddress" })
+                                                @Html.ValidationMessageFor(model => Model.UserViewModel.BillingAddress)
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                <button type="submit" class="btn btn-success p-1">Kaydet</button>
+                                            </div>
+                                        </div>
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Tab Content End -->
+                        </div>
+                    </div>
+                    <!-- My Account Tab Content End -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
